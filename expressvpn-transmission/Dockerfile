@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && tar -zxvf Cheetah-2.4.4.tar.gz \
     && cd ./Cheetah-2.4.4 \
     && python setup.py install \
-    && cd ..
+    && cd .. \
     && git clone git://github.com/midgetspy/Sick-Beard.git my-sickbeard-install \
     && rm -rf /var/lib/apt/lists/* 
     
