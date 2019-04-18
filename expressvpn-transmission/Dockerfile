@@ -8,8 +8,10 @@ RUN apt-get update && apt-get install -y \
     transmission-daemon git nano python wget \
     && wget https://pypi.python.org/packages/source/C/Cheetah/Cheetah-2.4.4.tar.gz \
     && tar -zxvf Cheetah-2.4.4.tar.gz \
-    && ./Cheetah-2.4.4/python setup.py install \
-    && wget --no-check-certificate https://github.com/midgetspy/Sick-Beard/tarball/master \
+    && cd ./Cheetah-2.4.4 \
+    && python setup.py install \
+    && cd ..
+    && git clone git://github.com/midgetspy/Sick-Beard.git my-sickbeard-install \
     && rm -rf /var/lib/apt/lists/* 
     
 
