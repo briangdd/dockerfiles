@@ -7,7 +7,7 @@ LABEL maintainer "benjamin@polkaned.net"
 RUN apt-get update && apt-get install -y \
     git-core python python-cheetah \
     transmission-daemon nano python wget \
-    && cd ~ && git clone https://github.com/SickRage/SickRage.git.  .sickrage \
+    && cd ~ && git clone https://github.com/briangdd/sickrage.git .sickrage \
     && cd ~/.sickrage \
     && cp -a autoProcessTV/autoProcessTV.cfg.sample autoProcessTV/autoProcessTV.cfg
     
