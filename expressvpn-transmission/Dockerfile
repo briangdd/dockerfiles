@@ -5,14 +5,12 @@ FROM polkaned/expressvpn:latest
 LABEL maintainer "benjamin@polkaned.net"
 
 RUN apt-get update && apt-get install -y \
-    transmission-daemon git nano python wget \
-    && wget https://pypi.python.org/packages/source/C/Cheetah/Cheetah-2.4.4.tar.gz \
-    && tar -zxvf Cheetah-2.4.4.tar.gz \
-    && cd ./Cheetah-2.4.4 \
-    && python setup.py install \
-    && cd .. \
-    && git clone git://github.com/midgetspy/Sick-Beard.git my-sickbeard-install \
-    && rm -rf /var/lib/apt/lists/* 
+    git-core python python-cheetah \
+    transmission-daemon nano python wget \
+    && cd ~ && git clone https://github.com/SickRage/SickRage.git.  .sickrage \
+    && cd ~/.sickrage \
+    && cp -a autoProcessTV/autoProcessTV.cfg.sample autoProcessTV/autoProcessTV.cfg \
+    && 
     
 
 CMD ["/usr/bin/transmission-daemon",\
@@ -26,4 +24,4 @@ CMD ["/usr/bin/transmission-daemon",\
 "--allowed","127.0.0.*,192.168.*.*,172.17.*.*", \
 "--config-dir","/var/lib/transmission-daemon/downloads", \
 "&&", \
-"python","./my-sickbeard-install/SickBeard.py","--datadir", "/var/lib/transmission-daemon/downloads/sickbeard" ]
+"python","~/.sickrage/SickBeard.py","-q"]
