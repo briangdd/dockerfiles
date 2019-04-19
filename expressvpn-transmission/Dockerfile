@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
     transmission-daemon nano python wget \
     && cd ~ && git clone https://github.com/SickRage/SickRage.git.  .sickrage \
     && cd ~/.sickrage \
-    && cp -a autoProcessTV/autoProcessTV.cfg.sample autoProcessTV/autoProcessTV.cfg \
-    && 
+    && cp -a autoProcessTV/autoProcessTV.cfg.sample autoProcessTV/autoProcessTV.cfg
+    
     
 
 CMD ["/usr/bin/transmission-daemon",\
