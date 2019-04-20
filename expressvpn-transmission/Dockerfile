@@ -6,8 +6,7 @@ LABEL maintainer "benjamin@polkaned.net"
 
 RUN apt-get update && apt-get install -y \
     git-core python python-cheetah \
-    libffi-dev openssl-dev libxml2-dev libxslt-dev linux-headers build-base git tzdata unrar \
-    transmission-daemon nano python wget \
+   transmission-daemon nano python wget \
     && cd ~ && git clone https://github.com/briangdd/sickrage.git .sickrage \
     && cd ~/.sickrage \
     && ls -l \
