@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && cd ~ && git clone https://github.com/briangdd/sickrage.git .sickrage \
     && cd ~/.sickrage \
     && ls -l \
-    && cp -a autoProcessTV/autoProcessTV.cfg.sample autoProcessTV/autoProcessTV.cfg
+    && cp -a sickrage/autoProcessTV/autoProcessTV.cfg.sample sickrage/autoProcessTV/autoProcessTV.cfg
     
     
 
