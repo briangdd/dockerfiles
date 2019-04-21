@@ -12,18 +12,9 @@ LABEL maintainer "benjamin@polkaned.net"
 #    && ls -l \
 #    && cp -a sickrage/autoProcessTV/autoProcessTV.cfg.sample sickrage/autoProcessTV/autoProcessTV.cfg
     
-RUN apk add --update \
-    python \
-    python-cheetah \
-    git \
-    mediainfo \
-    nodejs \
-    unrar \
-    tzdata \
-    gcc \
-    libffi-dev \
-    openssl-dev \
-    musl-dev \
+RUN apt-get update && apt-get install -y \
+    git-core python python-cheetah \
+    transmission-daemon nano python wget \
     && pip install pyopenssl \
     &&  mkdir /app /var/run/sickchill \
     &&  cd ~ && git clone https://github.com/sickchill/sickchill.git .sickchill 
