@@ -3,15 +3,40 @@
 
 FROM polkaned/expressvpn:latest
 LABEL maintainer "benjamin@polkaned.net"
-
-RUN apt-get update && apt-get install -y \
-    git-core python python-cheetah \
-   transmission-daemon nano python wget \
-    && cd ~ && git clone https://github.com/briangdd/sickrage.git .sickrage \
-    && cd ~/.sickrage \
-    && ls -l \
-    && cp -a sickrage/autoProcessTV/autoProcessTV.cfg.sample sickrage/autoProcessTV/autoProcessTV.cfg
+#
+#RUN apt-get update && apt-get install -y \
+#    git-core python python-cheetah \
+#   transmission-daemon nano python wget \
+#    && cd ~ && git clone https://github.com/briangdd/sickrage.git .sickrage \
+#    && cd ~/.sickrage \
+#    && ls -l \
+#    && cp -a sickrage/autoProcessTV/autoProcessTV.cfg.sample sickrage/autoProcessTV/autoProcessTV.cfg
     
+RUN apk add --update \
+    python \
+    python-cheetah \
+    git \
+    mediainfo \
+    nodejs \
+    unrar \
+    tzdata \
+    gcc \
+    libffi-dev \
+    openssl-dev \
+    musl-dev \
+    && pip install pyopenssl \
+    &&  mkdir /app /var/run/sickchill \
+    &&  cd ~ && git clone https://github.com/sickchill/sickchill.git .sickchill 
+
+COPY . /app/sickchill
+
+WORKDIR /app/sickchill
+
+VOLUME /data /downloads /tv
+
+
+
+EXPOSE 8088
     
 
 CMD ["/usr/bin/transmission-daemon",\
@@ -25,4 +50,4 @@ CMD ["/usr/bin/transmission-daemon",\
 "--allowed","127.0.0.*,192.168.*.*,172.17.*.*", \
 "--config-dir","/var/lib/transmission-daemon/downloads", \
 "&&", \
-"python","~/.sickrage/SickBeard.py","-q"]
+"/usr/local/bin/python","SickBeard.py","-q", "--nolaunch","--datadir=/data","--port" 8088"]
