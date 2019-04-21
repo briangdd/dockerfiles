@@ -14,8 +14,8 @@ LABEL maintainer "benjamin@polkaned.net"
     
 RUN apt-get update && apt-get install -y \
     git-core python python-cheetah \
-    python-setuptools \
-    transmission-daemon nano python wget \
+    python-pip \
+    transmission-daemon nano wget \
     && pip install pyopenssl \
     &&  mkdir /app /var/run/sickchill \
     &&  cd ~ && git clone https://github.com/sickchill/sickchill.git .sickchill 
